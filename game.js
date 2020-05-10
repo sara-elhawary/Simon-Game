@@ -19,5 +19,8 @@ function nextSequence() {
 $(".btn").click(function (e) {
   const userChosenColor = $(e.target).attr("id");
   userClickedPattern.push(userChosenColor);
-  console.log(userClickedPattern);
+  const sound = new Audio("sounds/" + userChosenColor + ".mp3");
+  //   console.log(userChosenColor);
+  sound.play();
+  //   console.log(userClickedPattern);
 });
