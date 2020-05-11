@@ -1,7 +1,15 @@
 userClickedPattern = [];
+let level = 0;
+
 gamePattern = [];
 buttonColors = ["red", "blue", "green", "yellow"];
+$(document).one("keyPress", function () {
+  nextSequence();
+});
 function nextSequence() {
+  level++;
+  //   console.log(level);
+  $("h1").text("level " + level);
   const rand = Math.floor(Math.random() * 4);
   const pickedColor = buttonColors[rand];
   gamePattern.push(pickedColor);
@@ -23,6 +31,7 @@ $(".btn").click(function (e) {
   animatePress(userChosenColor);
   //   console.log(userClickedPattern);
 });
+
 function playSound(name) {
   const sound = new Audio("sounds/" + name + ".mp3");
   sound.play();
