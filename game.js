@@ -11,16 +11,25 @@ function nextSequence() {
     .fadeOut(100)
     .fadeIn(100);
   $("#test").on("click", function () {
-    let audio = new Audio("sounds/" + pickedColor + ".mp3");
-    audio.play();
+    playSound(pickedColor);
   });
 }
 // nextSequence();
 $(".btn").click(function (e) {
   const userChosenColor = $(e.target).attr("id");
   userClickedPattern.push(userChosenColor);
-  const sound = new Audio("sounds/" + userChosenColor + ".mp3");
+  playSound(userChosenColor);
   //   console.log(userChosenColor);
-  sound.play();
+  animatePress(userChosenColor);
   //   console.log(userClickedPattern);
 });
+function playSound(name) {
+  const sound = new Audio("sounds/" + name + ".mp3");
+  sound.play();
+}
+function animatePress(currentColor) {
+  $("#" + currentColor).addClass("pressed");
+  setTimeout(function () {
+    $("#" + currentColor).removeClass("pressed");
+  }, 100);
+}
